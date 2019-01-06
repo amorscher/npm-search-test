@@ -1,0 +1,42 @@
+[{
+        "name": "express",
+        "description": "Fast, unopinionated, minimalist web framework",
+        "maintainers": [{
+            "username": "dougwilson",
+            "email": "doug@somethingdoug.com"
+        }, {
+            "username": "hacksparrow",
+            "email": "captain@hacksparrow.com"
+        }, {
+            "username": "jasnell",
+            "email": "jasnell@gmail.com"
+        }, {
+            "username": "mikeal",
+            "email": "mikeal.rogers@gmail.com"
+        }],
+        "keywords": ["express", "framework", "sinatra", "web", "rest", "restful", "router", "app", "api"],
+        "version": "4.16.4",
+        "date": "2018-10-11T03:59:14.308Z"
+    }, {
+        "name": "path-to-regexp",
+        "description": "Express style path to RegExp utility",
+        "maintainers": [{
+            "username": "blakeembrey",
+            "email": "hello@blakeembrey.com"
+        }, {
+            "username": "defunctzombie",
+            "email": "shtylman@gmail.com"
+        }, {
+            "username": "dougwilson",
+            "email": "doug@somethingdoug.com"
+        }, {
+            "username": "jonathanong",
+            "email": "jonathanrichardong@gmail.com"
+        }, {
+            "username": "jongleberry",
+            "email": "jonathanrichardong@gmail.com"
+        }],
+        "keywords": ["express", "regexp", "route", "routing"],
+        "version": "2.4.0",
+        "date": "2018-08-26T23:57:15.931Z"
+    }
