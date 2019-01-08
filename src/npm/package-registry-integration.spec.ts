@@ -79,7 +79,7 @@ describe('NPM Package registry integration tests', () => {
         const theRegistry = new NpmPackageRegistry();
         const packageToViewDetails = new PackageImpl("express","desscription","versions","");
         //WHEN
-        const details:any= await theRegistry.viewDetailsOf<any>(packageToViewDetails,[]);
+        const details:any= await theRegistry.viewDetailsOf<any>(packageToViewDetails,['dependencies','version']);
         //THEN
         expect(details).toBeDefined();
         expect(details.dependencies.methods).toBeDefined();
@@ -88,4 +88,16 @@ describe('NPM Package registry integration tests', () => {
     
   
     }));
+
+    it('test that specific tag with correct type can be retrieved ',testAsync(async () => {
+        //GIVEN
+        const theRegistry = new NpmPackageRegistry();
+        const packageToViewDetails = new PackageImpl("express","desscription","versions","");
+        //WHEN
+        const details:any= await theRegistry.viewDetailsOf<any>(packageToViewDetails,['dependencies','version']);
+        //THEN
+        expect(details).toBeUndefined();    
+  
+    }));
+
 });

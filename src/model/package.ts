@@ -13,7 +13,6 @@ export interface Package{
     version:string;
 
 }
-
 export class PackageFactory{
 
     public createPackage(name:string,description:string,author:string,version:string):Package{
