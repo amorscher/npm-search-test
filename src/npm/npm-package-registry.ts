@@ -10,6 +10,11 @@ const DEFAULT_INSTALL_OPTIONS:cp.SpawnOptions = {
     shell: true
   };
 export class NpmPackageRegistry implements PackageRegistry{
+    
+    
+    viewDetailsOf<T>(thePackage: Package, keys: string[]=[]): Promise<T> {
+        throw new Error("Method not implemented.");
+    }
    
 
     constructor(private registryURI:string = "https://registry.npmjs.com/",private jsonToModel:Json2Model<Package[]> = new NpmSearch2Package()){

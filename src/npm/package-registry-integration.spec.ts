@@ -1,4 +1,6 @@
 import {NpmPackageRegistry} from "./npm-package-registry";
+import { PackageImpl } from "../model/package";
+import { PackageRegistry } from "../package-registry";
 
 // The helper function
 function testAsync(runAsync) {
@@ -57,4 +59,33 @@ describe('NPM Package registry integration tests', () => {
   
     }));
 
+    it('test package json can be retrieved using npm view',testAsync(async () => {
+        //GIVEN
+        const theRegistry:PackageRegistry = new NpmPackageRegistry();
+        const packageToViewDetails = new PackageImpl("express","desscription","versions","");
+        //WHEN
+        const details:any= await theRegistry.viewDetailsOf(packageToViewDetails);
+        //THEN
+        expect(details).toBeDefined();
+        expect(details.dependencies).toBeDefined();
+        expect(details.license).toBeDefined();
+        expect(details.version).toBeDefined();
+    
+  
+    }));
+
+    it('test specific tags can be retrieved from a package',testAsync(async () => {
+        //GIVEN
+        const theRegistry = new NpmPackageRegistry();
+        const packageToViewDetails = new PackageImpl("express","desscription","versions","");
+        //WHEN
+        const details:any= await theRegistry.viewDetailsOf<any>(packageToViewDetails,[]);
+        //THEN
+        expect(details).toBeDefined();
+        expect(details.dependencies.methods).toBeDefined();
+        expect(details.version).toBeDefined();
+        expect(details.license).toBeUndefined();
+    
+  
+    }));
 });
