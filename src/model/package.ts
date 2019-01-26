@@ -1,3 +1,5 @@
+import { injectable } from "inversify";
+
 export interface Package{
     name:string;
     description:string;
@@ -13,10 +15,15 @@ export interface Package{
     version:string;
 
 }
+@injectable()
 export class PackageFactory{
 
-    public createPackage(name:string,description:string,author:string,version:string):Package{
+    public createPackage(name:string,description?:string,author?:string,version?:string):Package{
         return new PackageImpl(name,description,author,version);
+    }
+
+    public fromName(name:string):Package{
+        return this.createPackage(name);
     }
 }
 

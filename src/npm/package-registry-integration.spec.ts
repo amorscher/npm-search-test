@@ -12,7 +12,7 @@ function testAsync(runAsync) {
 /**
  * Integration tests for the package registry
  */
-describe('NPM Package registry integration tests', () => {
+describe('Package registry integration tests', () => {
 
     
     beforeEach(() => {
@@ -29,8 +29,22 @@ describe('NPM Package registry integration tests', () => {
         //THEN
         expect(foundPackages).toBeDefined();
         expect(foundPackages.length).toBeGreaterThan(0);
-        //first package is the express package
-        expect(foundPackages[0].name).toBe('express');
+     
+        //the express package should be included
+        const expressPackage = foundPackages.find(pkg=>pkg.name ==='express');
+        expect(expressPackage).toBeDefined();
+        expect(expressPackage.name).toBe('express');
+  
+    }));
+
+    it('test that search limit is considered',testAsync(async () => {
+        //GIVEN
+        const theRegistry = new NpmPackageRegistry();
+        //WHEN
+        const foundPackages= await theRegistry.searchPackagesWithKeywords(['express'],1);
+        //THEN
+        expect(foundPackages).toBeDefined();
+        expect(foundPackages.length).toBe(1);
   
     }));
 
@@ -42,8 +56,10 @@ describe('NPM Package registry integration tests', () => {
         //THEN
         expect(foundPackages).toBeDefined();
         expect(foundPackages.length).toBeGreaterThan(0);
-        //first package is the express package
-        expect(foundPackages[0].name).toBe('express');
+          //the express package should be included
+        const expressPackage = foundPackages.find(pkg=>pkg.name ==='express');
+        expect(expressPackage).toBeDefined();
+        expect(expressPackage.name).toBe('express');
   
     }));
 
@@ -89,15 +105,5 @@ describe('NPM Package registry integration tests', () => {
   
     }));
 
-    it('test that specific tag with correct type can be retrieved ',testAsync(async () => {
-        //GIVEN
-        const theRegistry = new NpmPackageRegistry();
-        const packageToViewDetails = new PackageImpl("express","desscription","versions","");
-        //WHEN
-        const details:any= await theRegistry.viewDetailsOf<any>(packageToViewDetails,['dependencies','version']);
-        //THEN
-        expect(details).toBeUndefined();    
-  
-    }));
-
+   
 });

@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "ts-node jasmine.js",
+    "unittest": "ts-node jasmine.js unit",
+    "coverage": "ts-node node_modules/istanbul/lib/cli.js cover -e .ts -x \"*.d.ts\" -x \"*.spec.ts\" jasmine.js",
+    "e2e": "ts-node jasmine.js e2e",
     "build": "tsc"
   },
   "dependencies": {
@@ -12,10 +15,12 @@
     "@types/npm": "^2.0.29",
     "inversify": "^5.0.1",
     "npm": "^6.5.0",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "6.3.3",
     "tslib": "^1.9.1"
   },
   "devDependencies": {
+    "istanbul": "^1.1.0-alpha.1",
     "@types/jasmine": "^3.3.5",
     "jasmine": "^3.1.0",
     "jasmine-core": "~3.3.0",
