@@ -1,8 +1,7 @@
-language: nodejs
-
+language: node_js
 node_js:
   - "iojs"
-  - "node"
+  - "7"
 
 before_script:
   - npm install
