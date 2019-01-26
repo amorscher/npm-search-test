@@ -1,13 +1,8 @@
 import { Package } from "../model/package";
-import * as npm from "npm";
 import * as cp from "child_process";
 import { NpmSearch2Package } from "./npm-search-2-package";
 import { PackageRegistry } from "../package-registry";
-import { Json2Model } from "../model/json2model";
-import { NpmExecution } from "./npm-execution";
-import { reject } from "q";
 import { NpmExecutionFactory } from "./npm-execution-factory";
-import { throws } from "assert";
 import { checkArgument } from "../model/exceptions";
 import { injectable, inject } from "inversify";
 import { TYPES } from "./types";
